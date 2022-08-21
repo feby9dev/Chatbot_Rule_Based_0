@@ -1,6 +1,7 @@
 import json
 import re
 import random_responses
+import random
 
 def load_json(file):
     with open(file) as bot_responses:
@@ -48,7 +49,10 @@ def get_response(input_string):
         return "Please type something so we can chat :)"
     
     if best_response != 0:
-        return responses_data[response_index]["bot_response"]
+        respond = responses_data[response_index]
+        bot_response = random.choice(respond["bot_response"])
+        return bot_response
+#        return responses_data[response_index]["bot_response"]
 
     return random_responses.random_string()
 
